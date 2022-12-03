@@ -2,10 +2,9 @@ import { useState, React } from "react";
 import Web3Modal from "web3modal";
 import {useEffect } from "react";
 import WalletConnectProvider from '@walletconnect/web3-provider'
+import AppPage from "../containers/AppPage/AppPage";
 
-import {  
-  Header
-} from "../containers";
+
 import { Navbar } from "../components";
 
 function Wrapper() {
@@ -31,7 +30,7 @@ function Wrapper() {
 
   return (
     <div className="gradient__bg">
-      <p>hello</p>
+      <AppPage/>
     </div>
   );
 }
