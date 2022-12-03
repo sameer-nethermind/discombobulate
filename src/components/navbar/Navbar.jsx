@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../logo.svg';
+import connectWallet from '../../App';
 import './navbar.css';
 
 const Navbar = () => {
@@ -17,7 +18,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="gpt3__navbar-sign">
-        <button type="button">Wrap </button>
+        <button type="button" onClick={connectWallet}>Connect Wallet</button>
       </div>
       <div className="gpt3__navbar-menu">
         {toggleMenu
@@ -27,7 +28,7 @@ const Navbar = () => {
         <div className="gpt3__navbar-menu_container scale-up-center">
 
           <div className="gpt3__navbar-menu_container-links-sign">
-            <button type="button">Wrap</button>
+            <button type="button">Connect Wallet</button>
           </div>
         </div>
         )}
