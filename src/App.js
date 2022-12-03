@@ -88,7 +88,6 @@ function App() {
       <Navbar />
       <Header />
     </div>
-    {connectWalletButton()}
     <Brand />
     <WhatGPT3 />
     <Footer />
