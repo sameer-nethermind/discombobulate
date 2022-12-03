@@ -3,6 +3,8 @@ import Web3Modal from "web3modal";
 import { useRef, useEffect } from "react";
 import Home from "./pages/Home";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import "./App.css";
 
 function App() {
