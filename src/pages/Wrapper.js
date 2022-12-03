@@ -5,13 +5,13 @@ import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import {
   Footer,
-  Blog,
-  Possibility,
-  Features,
   WhatGPT3,
+
+
+  
   Header,
-} from "./containers";
-import { CTA, Brand, Navbar } from "./components";
+} from "../containers";
+import { Navbar } from "../components";
 
 function Wrapper() {
   const [currentAccount, setCurrentAccount] = useState(null);
@@ -54,15 +54,9 @@ function Wrapper() {
   }
 
   return (
-    <div className="App">
     <div className="gradient__bg">
-      <Navbar />
       <Header />
     </div>
-
-    <WhatGPT3 />
-    <Footer />
-  </div>
   );
 }
 

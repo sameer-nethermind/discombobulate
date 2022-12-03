@@ -1,6 +1,8 @@
 import React from "react";
 import people from "../../assets/people.png";
 import ai from "../../assets/logo.png";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 import "./header.css";
 
 const Header = () => (
@@ -14,8 +16,8 @@ const Header = () => (
       </p>
 
       <div className="gpt3__header-content__input">
-        <Link></Link>
-        <button type="button">Goto App</button>
+        <Link to="/app"> 
+        <Button> Go to App</Button></Link>
       </div>
 
       <div className="gpt3__header-content__people">

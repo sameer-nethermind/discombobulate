@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import Home from "./pages/Home";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Wrapper from "./pages/Wrapper";
 
 import "./App.css";
 import { ethers } from "ethers";
@@ -42,14 +43,22 @@ function App() {
   }, []);
 
   return (
+    <BrowserRouter>
     <div className="App">
       <div className="gpt3__navbar-sign">
         <button type="button" onClick={connectWallet}>
           Connect Wallet
         </button>
       </div>
-      <Home></Home>
-    </div>
+      
+        <Routes>
+          <Route path="/" element={<Home/>}>
+          <Route exact path="/app" element={<Wrapper />} />
+          </Route>
+        </Routes>
+      </div>
+      </BrowserRouter>
+    
   );
 }
 
