@@ -67,13 +67,6 @@ function App() {
     <div className="App">
       <Home></Home>
     </div>
-<<<<<<< HEAD
-=======
-    <Brand />
-    <WhatGPT3 />
-    <Footer />
-  </div>
->>>>>>> 57ff348f1f100e09016bc5afde75904dd11dfe83
   );
 }
 
