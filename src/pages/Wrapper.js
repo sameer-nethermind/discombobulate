@@ -3,34 +3,14 @@ import Web3Modal from "web3modal";
 import {useEffect } from "react";
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
-import {
-  Footer,
-  WhatGPT3,
-
-
-  
-  Header,
+import {  
+  Header
 } from "../containers";
 import { Navbar } from "../components";
 
 function Wrapper() {
-  const [currentAccount, setCurrentAccount] = useState(null);
-
-  const connectWalletButton = () => {
-    return (
-      <button
-        onClick={connectWallet}
-        className="cta-button connect-wallet-button"
-      >
-        Connect Wallet
-      </button>
-    );
-  };
-
   const [web3Modal, setWeb3Modal] = useState(null)
-
   useEffect(() => {
-    // initiate web3modal
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider,
@@ -49,13 +29,9 @@ function Wrapper() {
     setWeb3Modal(newWeb3Modal)
   }, [])
 
-  async function connectWallet() {
-    const provider = await web3Modal.connect();
-  }
-
   return (
     <div className="gradient__bg">
-      <Header />
+      <p>hello</p>
     </div>
   );
 }

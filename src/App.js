@@ -52,9 +52,8 @@ function App() {
       </div>
       
         <Routes>
-          <Route path="/" element={<Home/>}>
-          <Route exact path="/app" element={<Wrapper />} />
-          </Route>
+          <Route exact path="/" element={<Home/>} />
+          <Route path="/app" element={<Wrapper/>} />
         </Routes>
       </div>
       </BrowserRouter>

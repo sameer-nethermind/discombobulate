@@ -8,6 +8,7 @@ import {
   Header,
 } from "../containers";
 import { Brand, Navbar } from "../components";
+import { Router } from 'react-router-dom';
 
 function Home() {
   const [web3Modal, setWeb3Modal] = useState(null)
