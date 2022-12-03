@@ -6,13 +6,23 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
+import { ethers } from "ethers";
 
 function App() {
   const [web3Modal, setWeb3Modal] = useState(null);
   async function connectWallet() {
     const provider = await web3Modal.connect();
-    console.log(provider)
-}
+
+    let address = provider.selectedAddress;
+    if (parseInt(provider.chainId) === 1) {
+      let _provider = new ethers.providers.Web3Provider(provider);
+      let name = await _provider.lookupAddress(address);
+      address = name;
+      console.log(name);
+    }
+
+    return address;
+  }
 
   useEffect(() => {
     const providerOptions = {
@@ -24,7 +34,7 @@ function App() {
       },
     };
     const newWeb3Modal = new Web3Modal({
-      cacheProvider: true, 
+      cacheProvider: true,
       network: "mainnet",
       providerOptions,
     });
@@ -34,7 +44,9 @@ function App() {
   return (
     <div className="App">
       <div className="gpt3__navbar-sign">
-        <button type="button" onClick={connectWallet}>Connect Wallet</button>
+        <button type="button" onClick={connectWallet}>
+          Connect Wallet
+        </button>
       </div>
       <Home></Home>
     </div>
