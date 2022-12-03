@@ -2,19 +2,21 @@ import { useState, React } from "react";
 import Web3Modal from "web3modal";
 import {useEffect } from "react";
 import WalletConnectProvider from '@walletconnect/web3-provider'
-
 import {
   Footer,
   WhatGPT3,
   Header,
 } from "../containers";
-import { CTA, Brand, Navbar } from "../components";
+import { Brand, Navbar } from "../components";
 
 function Home() {
   const [web3Modal, setWeb3Modal] = useState(null)
+  async function connectWallet() {
+      const provider = await web3Modal.connect();
+      console.log(provider)
+  }
 
   useEffect(() => {
-    // initiate web3modal
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider,

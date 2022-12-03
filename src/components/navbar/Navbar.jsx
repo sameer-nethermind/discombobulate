@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import logo from '../../logo.svg';
-import connectWallet from '../../App';
+import connectWallet from '../../pages/Home';
 import './navbar.css';
 
 const Navbar = () => {
