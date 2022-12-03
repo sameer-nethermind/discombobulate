@@ -1,23 +1,20 @@
-import React from 'react';
-import { google, slack, atlassian, dropbox, shopify } from './imports';
-import './brand.css';
+import React from "react";
+import "./brand.css";
+import Button from "@mui/material/Button";
 
 const Brand = () => (
   <div className="gpt3__brand section__padding">
     <div>
-      <img src={google} />
+      <h3>
+        <a className="btn" href="/">
+          Lodge Complaint
+        </a>
+      </h3>
     </div>
     <div>
-      <img src={slack} />
-    </div>
-    <div>
-      <img src={atlassian} />
-    </div>
-    <div>
-      <img src={dropbox} />
-    </div>
-    <div>
-      <img src={shopify} />
+      <h3>
+        <Button variant="contained">Lodge Complaint</Button>
+      </h3>
     </div>
   </div>
 );
