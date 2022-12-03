@@ -3,6 +3,8 @@ import Web3Modal from "web3modal";
 import { useRef, useEffect } from "react";
 import { providers } from "ethers";
 import { Button } from "@mui/material";
+import WalletConnectProvider from '@walletconnect/web3-provider'
+
 
 import {
   Footer,
@@ -44,43 +46,31 @@ function App() {
     );
   };
 
-  const [connectedWallet, setConnectedWallet] = useState(false);
-  const web3ModalRef = useRef(); // return the object with key named current
-
-  // providers and signer  =>
-  // providers is used for to get data from sc
-  // signer is used for to sign data / set the data to sc
-
-  const getSignerOrProvider = async (needSigner = false) => {
-    const provider = await web3ModalRef.current.connect();
-    const web3Provider = new providers.Web3Provider(provider);
-    const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 4) {
-      alert("USE RINKEEBY NETWORK");
-      throw new Error("Change network to Rinkeby");
-    }
-    if (needSigner) {
-      const signer = web3Provider.getSigner();
-      return signer;
-    }
-    return provider;
-  };
-
-  const connectWallet = async () => {
-    try {
-      await getSignerOrProvider();
-      setConnectedWallet(true);
-    } catch (error) {
-      console.log(" error", error);
-    }
-  };
+  const [web3Modal, setWeb3Modal] = useState(null)
 
   useEffect(() => {
-    web3ModalRef.current = new Web3Modal({
-      network: "rinkeby",
-      providerOptions: {},
+    // initiate web3modal
+    const providerOptions = {
+      walletconnect: {
+        package: WalletConnectProvider,
+        options: {
+          infuraId: process.QUICKNODE_API,
+        }
+      },
+    };
+
+    const newWeb3Modal = new Web3Modal({
+      cacheProvider: true, // very important
+      network: "mainnet",
+      providerOptions,
     });
-  }, []);
+
+    setWeb3Modal(newWeb3Modal)
+  }, [])
+
+  async function connectWallet() {
+    const provider = await web3Modal.connect();
+  }
 
   return (
     <div className="App">
