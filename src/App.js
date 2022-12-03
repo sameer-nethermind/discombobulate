@@ -32,10 +32,12 @@ function App() {
   return (
     <div className="App">
     <div className="gradient__bg">
+      <div className="gpt3__navbar-sign">
+        <button type="button" onClick={connectWalletHandler}>Connect wallet</button>
+      </div>
       <Navbar />
       <Header />
     </div>
-    {connectWalletButton()}
     <Brand />
     <WhatGPT3 />
     <Features />
