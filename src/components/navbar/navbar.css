@@ -6,6 +6,10 @@
     padding: 2rem 6rem;
 }
 
+.gpt3_container {
+    text-align: center;
+}
+
 .gpt3__navbar-links {
     flex: 1;
     display: flex;
