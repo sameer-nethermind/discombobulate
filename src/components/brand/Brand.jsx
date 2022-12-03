@@ -14,11 +14,6 @@ const Brand = () => (
         <Button variant="contained">Resolve Conflict</Button>
       </h3>
     </div>
-    <div>
-      <h3>
-        <Button variant="contained">Resolve Conflict</Button>
-      </h3>
-    </div>
   </div>
 );
 
