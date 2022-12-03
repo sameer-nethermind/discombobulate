@@ -7,6 +7,11 @@ import "./App.css";
 
 function App() {
   const [web3Modal, setWeb3Modal] = useState(null);
+  async function connectWallet() {
+    const provider = await web3Modal.connect();
+    console.log(provider)
+}
+
   useEffect(() => {
     const providerOptions = {
       walletconnect: {
@@ -26,6 +31,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="gpt3__navbar-sign">
+        <button type="button" onClick={connectWallet}>Connect Wallet</button>
+      </div>
       <Home></Home>
     </div>
   );
