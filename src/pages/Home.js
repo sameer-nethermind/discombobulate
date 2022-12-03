@@ -11,19 +11,6 @@ import {
 import { CTA, Brand, Navbar } from "../components";
 
 function Home() {
-  const [currentAccount, setCurrentAccount] = useState(null);
-
-  const connectWalletButton = () => {
-    return (
-      <button
-        onClick={connectWallet}
-        className="cta-button connect-wallet-button"
-      >
-        Connect Wallet
-      </button>
-    );
-  };
-
   const [web3Modal, setWeb3Modal] = useState(null)
 
   useEffect(() => {
@@ -45,10 +32,6 @@ function Home() {
 
     setWeb3Modal(newWeb3Modal)
   }, [])
-
-  async function connectWallet() {
-    const provider = await web3Modal.connect();
-  }
 
   return (
     <div className="App">
