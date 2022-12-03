@@ -10,12 +10,18 @@ function App() {
   const [web3Modal, setWeb3Modal] = useState(null);
   async function connectWallet() {
     const provider = await web3Modal.connect();
-    console.log(provider);
-    // const _provider = new ethers.providers.Web3Provider(provider);
-    // const name = await _provider.lookupAddress(
-    //   "0x648aa14e4424e0825a5ce739c8c68610e143fb79"
-    // );
-    // console.log(name);
+
+    let address = provider.selectedAddress;
+    if (parseInt(provider.chainId) === 1) {
+      let _provider = new ethers.providers.Web3Provider(provider);
+      let name = await _provider.lookupAddress(
+        "0x648aa14e4424e0825a5ce739c8c68610e143fb79"
+      );
+      address = name;
+      console.log(name);
+    }
+
+    return address;
   }
 
   useEffect(() => {
