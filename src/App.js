@@ -14,9 +14,7 @@ function App() {
     let address = provider.selectedAddress;
     if (parseInt(provider.chainId) === 1) {
       let _provider = new ethers.providers.Web3Provider(provider);
-      let name = await _provider.lookupAddress(
-        "0x648aa14e4424e0825a5ce739c8c68610e143fb79"
-      );
+      let name = await _provider.lookupAddress(address);
       address = name;
       console.log(name);
     }
