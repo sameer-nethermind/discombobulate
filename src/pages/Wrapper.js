@@ -1,15 +1,19 @@
 import { useState, React } from "react";
 import Web3Modal from "web3modal";
-import { useRef, useEffect } from "react";
-import { providers } from "ethers";
-import { Button } from "@mui/material";
-import Home from "./pages/Home";
-// import Wrapper from "./pages/Wrapper";
-import WalletConnectProvider from "@walletconnect/web3-provider";
+import {useEffect } from "react";
+import WalletConnectProvider from '@walletconnect/web3-provider'
 
-import "./App.css";
+import {
+  Footer,
+  Blog,
+  Possibility,
+  Features,
+  WhatGPT3,
+  Header,
+} from "./containers";
+import { CTA, Brand, Navbar } from "./components";
 
-function App() {
+function Wrapper() {
   const [currentAccount, setCurrentAccount] = useState(null);
 
   // const connectWalletHandler = async () => {
@@ -37,7 +41,7 @@ function App() {
     );
   };
 
-  const [web3Modal, setWeb3Modal] = useState(null);
+  const [web3Modal, setWeb3Modal] = useState(null)
 
   useEffect(() => {
     // initiate web3modal
@@ -46,7 +50,7 @@ function App() {
         package: WalletConnectProvider,
         options: {
           infuraId: process.QUICKNODE_API,
-        },
+        }
       },
     };
 
@@ -56,8 +60,8 @@ function App() {
       providerOptions,
     });
 
-    setWeb3Modal(newWeb3Modal);
-  }, []);
+    setWeb3Modal(newWeb3Modal)
+  }, [])
 
   async function connectWallet() {
     const provider = await web3Modal.connect();
@@ -65,9 +69,16 @@ function App() {
 
   return (
     <div className="App">
-      <Home></Home>
+    <div className="gradient__bg">
+      <Navbar />
+      <Header />
     </div>
+    {connectWalletButton()}
+    <Brand />
+    <WhatGPT3 />
+    <Footer />
+  </div>
   );
 }
 
-export default App;
+export default Wrapper;
