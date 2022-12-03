@@ -6,14 +6,12 @@ const Brand = () => (
   <div className="gpt3__brand section__padding">
     <div>
       <h3>
-        <a className="btn" href="/">
-          Lodge Complaint
-        </a>
+        <Button variant="contained">Initiate Conflict</Button>
       </h3>
     </div>
     <div>
       <h3>
-        <Button variant="contained">Lodge Complaint</Button>
+        <Button variant="contained">Resolve Conflict</Button>
       </h3>
     </div>
   </div>
