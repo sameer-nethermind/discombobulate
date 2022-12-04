@@ -32,7 +32,7 @@ function App() {
     return address;
   }
 
-  useEffect(() => {
+  useEffect(async() => {
     const providerOptions = {
       walletconnect: {
         package: WalletConnectProvider,
@@ -47,6 +47,9 @@ function App() {
       providerOptions,
     });
     setWeb3Modal(newWeb3Modal);
+
+    const _provider = await newWeb3Modal.connect();
+    setProvider(_provider);
   }, []);
 
   return (
@@ -60,7 +63,7 @@ function App() {
       
         <Routes>
           <Route exact path="/" element={<Home/>} />
-          <Route path="/app" element={<Wrapper/>} />
+          <Route path="/app" element={<Wrapper provider = {provider}/>} />
         </Routes>
       </div>
       </BrowserRouter>

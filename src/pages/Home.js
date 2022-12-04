@@ -12,10 +12,6 @@ import { Router } from 'react-router-dom';
 
 function Home() {
   const [web3Modal, setWeb3Modal] = useState(null)
-  async function connectWallet() {
-      const provider = await web3Modal.connect();
-      console.log(provider)
-  }
 
   useEffect(() => {
     const providerOptions = {
