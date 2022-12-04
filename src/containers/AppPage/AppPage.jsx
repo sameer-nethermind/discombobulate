@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState, React, useRef } from "react";
 import people from "../../assets/people.png";
 import ai from "../../assets/logo.png";
 import { Link } from "react-router-dom";
@@ -10,21 +10,63 @@ import ContractDetails from "../../chain-data/ContractDetails.json";
 
 function AppPage(provider) {
   const [contractInstance, setContractInstance] = useState(null);
+  const [setupAddress, setsetupAddress] = useState(null);
+  const [wrapAmount, setwrapAmount] = useState(null);
+  const [unwrapAmount, setunwrapAmount] = useState(null);
 
-  async function totalPublishedProjs(){
+  async function getContract(){
     let temp;
 
     if(!contractInstance){
       let provider_wrapper = new ethers.providers.Web3Provider(provider.provider);
+      console.log("provider bkl" ,provider_wrapper);
       temp = new ethers.Contract(ContractDetails['address'], ABI, provider_wrapper);
       setContractInstance(temp);
     }
     else{
       temp = contractInstance;
     }
+  }
 
-    let x = await temp.totalPublishedProjs();
-    console.log("X:", x);
+  function onChange0(e) {
+    let data= e.target.value;
+    setsetupAddress(data);
+  }
+
+  function onChange1(e) {
+    let data= e.target.value;
+    setwrapAmount(data);
+  }
+
+  function onChange2(e) {
+    let data= e.target.value;
+    setunwrapAmount(data)
+  }
+
+  async function setupUser() {
+    getContract();
+    console.log(setupAddress)
+    await console.log("instance", contractInstance);
+    let tx= await contractInstance.setUpUser(setupAddress);
+    console.log("tx",tx);
+  }
+
+  async function wrap() {
+    getContract();
+    console.log(wrapAmount)
+    contractInstance.wrap(wrapAmount);
+  }
+
+  async function completeUnWrap() {
+    getContract();
+    console.log()
+    contractInstance.completeWrap(unwrapAmount);
+  }
+
+  async function initiateUnwrap() {
+    getContract();
+    console.log(unwrapAmount)
+    contractInstance.completeWrap(unwrapAmount);
   }
 
   return (<div className="gpt3__header section__padding" id="home">
@@ -34,16 +76,19 @@ function AppPage(provider) {
       <h2>(Please add an alternate account before proceeding)</h2>
 
       <div className="gpt3__header-content__input">
-        <input type="text" name="altAccount" />
-        <Button onClick={totalPublishedProjs}> Wrap</Button>
+        <input onChange={onChange0} type="text" name="altAccount" />
+        <Button onClick={setupUser}> Setup User</Button>
       </div>
       <div className="gpt3__header-content__input">
-        <input type="number" min="0" name="wrap" />
+        <input onChange={onChange1} type="number" min="0" name="wrap" />
         <Button onClick={wrap}>Wrap</Button>
       </div>
       <div className="gpt3__header-content__input">
-        <input type="number" min="0" name="unwrap" />
-        <Button onClick={unwrap}>Unwrap</Button>
+        <input onChange={onChange2} type="number" min="0" name="unwrap" />
+        <Button onClick={initiateUnwrap}>Initiate Unwrap</Button>
+      </div>
+      <div  className="gpt3__header-content__input">
+        <Button onClick={completeUnWrap}>Unwrap</Button>
       </div>
     </div>
 

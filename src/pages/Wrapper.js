@@ -4,12 +4,6 @@ import {useEffect } from "react";
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import AppPage from "../containers/AppPage/AppPage";
 
-import { Navbar } from "../components";
-import {ethers} from 'ethers';
-import ABI from "../chain-data/ABI.json";
-import ContractDetails from "../chain-data/ContractDetails.json";
-import { Button } from "@mui/material";
-
 function Wrapper({provider}) {
   const [web3Modal, setWeb3Modal] = useState(null);
   const [contractInstance, setContractInstance] = useState(null);
