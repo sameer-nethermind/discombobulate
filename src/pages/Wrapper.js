@@ -5,8 +5,6 @@ import WalletConnectProvider from '@walletconnect/web3-provider'
 import AppPage from "../containers/AppPage/AppPage";
 
 
-import { Navbar } from "../components";
-
 function Wrapper() {
   const [web3Modal, setWeb3Modal] = useState(null)
   useEffect(() => {
