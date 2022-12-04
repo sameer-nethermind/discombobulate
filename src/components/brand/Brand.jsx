@@ -6,7 +6,9 @@ const Brand = () => (
   <div className="gpt3__brand section__padding">
     <div>
       <h3>
-        <Button variant="contained">Initiate Conflict</Button>
+        <a href="https://hvyw9eev4lj.typeform.com/to/O80vHvlj">
+          <Button variant="contained">Initiate Conflict</Button>
+        </a>
       </h3>
     </div>
     <div>
