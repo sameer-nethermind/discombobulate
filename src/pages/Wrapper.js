@@ -7,8 +7,9 @@ import { Navbar } from "../components";
 import {ethers} from 'ethers';
 import ABI from "../chain-data/ABI.json";
 import ContractDetails from "../chain-data/ContractDetails.json";
+import { Button } from "@mui/material";
 
-function Wrapper() {
+function Wrapper({provider}) {
   const [web3Modal, setWeb3Modal] = useState(null);
   const [contractInstance, setContractInstance] = useState(null);
 
@@ -28,8 +29,7 @@ function Wrapper() {
       providerOptions,
     });
 
-    // contractInstance = new ethers.Contract(ContractDetails['address'], ABI, provider);
-    // console.log(contractInstance);
+    contractInstance = new ethers.Contract(ContractDetails['address'], ABI, provider);
 
     setWeb3Modal(newWeb3Modal);
   }, [])
