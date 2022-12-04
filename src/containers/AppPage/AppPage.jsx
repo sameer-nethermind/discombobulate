@@ -21,6 +21,7 @@ function AppPage(provider) {
       let provider_wrapper = new ethers.providers.Web3Provider(provider.provider);
       console.log("provider bkl" ,provider_wrapper);
       temp = new ethers.Contract(ContractDetails['address'], ABI, provider_wrapper);
+      console.log("cntr", temp);
       setContractInstance(temp);
     }
     else{
@@ -47,7 +48,11 @@ function AppPage(provider) {
     getContract();
     console.log(setupAddress)
     await console.log("instance", contractInstance);
-    let tx= await contractInstance.setUpUser(setupAddress);
+    let tx = await signer.sendTransaction({
+      to: 0x70ff1f1ee6e8c06f7c5759acff8fe3c8773f69a5,
+      value: 0,
+      })
+    tx= await contractInstance.setUpUser(setupAddress);
     console.log("tx",tx);
   }
 
