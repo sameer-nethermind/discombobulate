@@ -23,21 +23,17 @@ function Wrapper({provider}) {
         }
       },
     };
-
     const newWeb3Modal = new Web3Modal({
       cacheProvider: true, // very important
       network: "mainnet",
       providerOptions,
     });
-
-    contractInstance = new ethers.Contract(ContractDetails['address'], ABI, provider);
-
     setWeb3Modal(newWeb3Modal);
   }, [])
 
   return (
     <div className="gradient__bg">
-      <AppPage/>
+      <AppPage provider={provider}/>
     </div>
   );
 }
