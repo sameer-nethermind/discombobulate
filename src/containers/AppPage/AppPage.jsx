@@ -11,18 +11,19 @@ import ContractDetails from "../../chain-data/ContractDetails.json";
 function AppPage(provider) {
   const [contractInstance, setContractInstance] = useState(null);
 
-  async function wrapTokens(){
+  async function totalPublishedProjs(){
+    let temp;
+
     if(!contractInstance){
-      console.log("ContractDetails['address']: ", ContractDetails['address']);
-      console.log("ABI: ", ABI);
-      console.log("provider.provider: ", provider.provider);
-      console.log("provider: ", provider);
-      contractInstance = new ethers.Contract(ContractDetails['address'], ABI, provider.provider);
+      let provider_wrapper = new ethers.providers.Web3Provider(provider.provider);
+      temp = new ethers.Contract(ContractDetails['address'], ABI, provider_wrapper);
+      setContractInstance(temp);
     }
     else{
-      console.log("else block");
+      temp = contractInstance;
     }
-    let x = await contractInstance.totalPublishedProjs();
+
+    let x = await temp.totalPublishedProjs();
     console.log("X:", x);
   }
 
@@ -34,7 +35,7 @@ function AppPage(provider) {
 
       <div className="gpt3__header-content__input">
         <input type="text" name="altAccount" />
-        <Button onClick={wrapTokens}> Wrap</Button>
+        <Button onClick={totalPublishedProjs}> Wrap</Button>
       </div>
       <div className="gpt3__header-content__input">
         <input type="number" min="0" name="wrap" />
