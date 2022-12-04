@@ -5,22 +5,29 @@ import Home from "./pages/Home";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Wrapper from "./pages/Wrapper";
+import ABI from "./chain-data/ABI.json";
+import ContractDetails from "./chain-data/ContractDetails.json";
 
 import "./App.css";
 import { ethers } from "ethers";
 
 function App() {
   const [web3Modal, setWeb3Modal] = useState(null);
-  async function connectWallet() {
-    const provider = await web3Modal.connect();
+  const [provider, setProvider] = useState(null);
 
-    let address = provider.selectedAddress;
-    if (parseInt(provider.chainId) === 1) {
-      let _provider = new ethers.providers.Web3Provider(provider);
-      let name = await _provider.lookupAddress(address);
-      address = name;
-      console.log(name);
-    }
+  async function connectWallet() {
+    const _provider = await web3Modal.connect();
+    setProvider(_provider);
+    let address = _provider.selectedAddress;
+    // if (parseInt(_provider.chainId) === 8001) {
+    //   let _provider = new ethers.providers.Web3Provider(provider);
+    //   let name = await _provider.lookupAddress(address);
+    //   address = name;
+    //   console.log(name);
+    // }
+    // else{
+    //   console.log("wrong network broo");
+    // }
 
     return address;
   }

@@ -4,9 +4,15 @@ import {useEffect } from "react";
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import AppPage from "../containers/AppPage/AppPage";
 
+import { Navbar } from "../components";
+import {ethers} from 'ethers';
+import ABI from "../chain-data/ABI.json";
+import ContractDetails from "../chain-data/ContractDetails.json";
 
 function Wrapper() {
-  const [web3Modal, setWeb3Modal] = useState(null)
+  const [web3Modal, setWeb3Modal] = useState(null);
+  const [contractInstance, setContractInstance] = useState(null);
+
   useEffect(() => {
     const providerOptions = {
       walletconnect: {
@@ -23,7 +29,10 @@ function Wrapper() {
       providerOptions,
     });
 
-    setWeb3Modal(newWeb3Modal)
+    // contractInstance = new ethers.Contract(ContractDetails['address'], ABI, provider);
+    // console.log(contractInstance);
+
+    setWeb3Modal(newWeb3Modal);
   }, [])
 
   return (
@@ -34,3 +43,4 @@ function Wrapper() {
 }
 
 export default Wrapper;
+
